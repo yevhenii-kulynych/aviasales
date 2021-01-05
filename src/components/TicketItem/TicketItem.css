@@ -32,7 +32,8 @@
 }
 
 .time,
-.place {
+.place,
+.date {
     display: flex;
     justify-content: space-between;
 }
