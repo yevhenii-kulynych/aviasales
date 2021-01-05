@@ -4,7 +4,7 @@ export const useValidation = regexp => {
 
     const [value, setValue] = useState('');
     const [color, setColor] = useState('red');
-    const [error, setError] = useState(false)
+    const [error, setError] = useState(true)
     const [reg] = useState(regexp);
 
 
@@ -14,6 +14,7 @@ export const useValidation = regexp => {
 
             setColor('green')
             setValue(event.target.value)
+            setError(false)
         } else {
 
             setValue(event.target.value)
