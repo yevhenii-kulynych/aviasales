@@ -31,7 +31,7 @@ const TicketItem = props => {
                 <div className="item__right">
                     <div className="time">
                         <p className="time__departure">{ props.departureTime }</p>
-                        <p className="time__stops">{ props.stops } пересадки</p>
+                        <p className="time__stops">{ props.stops ? props.stops : 'Без' } пересадки</p>
                         <p className="time__arrivals">{ props.arrivalTime }</p>
                     </div>
                     <div className="place">
