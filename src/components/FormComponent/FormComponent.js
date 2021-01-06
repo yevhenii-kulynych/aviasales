@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { useValidation } from '../../hoocks/useValidation'
 import "./FormComponent.css";
 
-const FormComponent = ({ changeSuccess }) => {
+const FormComponent = ({ changeSuccess, closeHandler }) => {
 
     const [error, setError] = useState({});
     const inputEmail = useRef(null);
@@ -79,7 +79,7 @@ const FormComponent = ({ changeSuccess }) => {
                 <Form.Label>Номер паспорта</Form.Label>
                 <Form.Control type="text" placeholder="Введите номер паспорта" onBlur={ passport.changeHandler } ref={ inputPassport } />
             </Form.Group>
-            <Button variant="danger" className="mr-2">
+            <Button variant="danger" className="mr-2" onClick={ closeHandler }>
                 Отказаться
             </Button>
             

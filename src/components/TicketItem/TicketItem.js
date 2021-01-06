@@ -4,7 +4,7 @@ import Popup from '../Popup/Popup'
 import logo from "../../assets/company.png";
 import "./TicketItem.css";
 
-const TicketItem = props => {
+const TicketItem = ({ ticket }) => {
 
     const [show, setShow] = useState(false);
 
@@ -26,25 +26,25 @@ const TicketItem = props => {
             <div className="item">
                 <div className="item__left">
                     <img className="item__company-logo" src={ logo } />
-                    <OwnButton text={ props.textBtn } handleShow={handleShow}></OwnButton>
+                    <OwnButton price={ ticket.price } handleShow={ handleShow }></OwnButton>
                 </div>
                 <div className="item__right">
                     <div className="time">
-                        <p className="time__departure">{ props.departureTime }</p>
-                        <p className="time__stops">{ props.stops ? props.stops : 'Без' } пересадки</p>
-                        <p className="time__arrivals">{ props.arrivalTime }</p>
+                        <p className="time__departure">{ ticket.departure_time }</p>
+                        <p className="time__stops">{ ticket.stops ? ticket.stops : 'Без' } пересадки</p>
+                        <p className="time__arrivals">{ ticket.arrival_time }</p>
                     </div>
                     <div className="place">
-                        <p className="place__from">{ props.origin }, { props.originName }</p>
-                        <p className="place__to">{ props.destination }, { props.destinationName }</p>
+                        <p className="place__from">{ ticket.origin }, { ticket.origin_name }</p>
+                        <p className="place__to">{ ticket.destination }, { ticket.destination_name }</p>
                     </div>
                     <div className="date">
-                        <p className="date__from">{formatDate(props.departureDate) }</p>
-                        <p className="date__to">{formatDate(props.arrivalDate) }</p>
+                        <p className="date__from">{formatDate(ticket.departure_date) }</p>
+                        <p className="date__to">{formatDate(ticket.arrival_date) }</p>
                     </div>
                 </div>
             </div>
-            <Popup isShow={ show } handleClose={ handleClose } data={ props } />
+            <Popup isShow={ show } handleClose={ handleClose } data={ ticket } />
         </>
     )
 }

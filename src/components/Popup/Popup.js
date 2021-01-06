@@ -3,7 +3,7 @@ import { Modal, Button} from "react-bootstrap";
 import FormComponent from "../FormComponent/FormComponent"
 import "./Popup.css";
 
-const Popup = props => {
+const Popup = ({ data, isShow, handleClose }) => {
 
     const [success, setSuccess] = useState(false);
 
@@ -14,8 +14,8 @@ const Popup = props => {
     return (
         <>
           <Modal
-            show={ props.isShow }
-            onHide={ props.handleClose }
+            show={ isShow }
+            onHide={ handleClose }
             backdrop="static"
             keyboard={ false }
           >
@@ -32,17 +32,17 @@ const Popup = props => {
                         <div className="item">
                             <div className="item__right">
                                 <div className="time">
-                                    <p className="time__departure">{ props.data.departureTime }</p>
-                                    <p className="time__stops">{ props.data.stops ? props.data.stops : 'Без' } пересадки</p>
-                                    <p className="time__arrivals">{ props.data.arrivalTime }</p>
+                                    <p className="time__departure">{ data.departure_time }</p>
+                                    <p className="time__stops">{ data.stops ? data.stops : 'Без' } пересадки</p>
+                                    <p className="time__arrivals">{ data.arrival_time }</p>
                                 </div>
                                 <div className="place">
-                                    <p className="place__from">{ props.data.origin }, { props.data.originName }</p>
-                                    <p className="place__to">{ props.data.destination }, { props.data.destinationName }</p>
-                                </div>
+                        <p className="place__from">{ data.origin }, { data.origin_name }</p>
+                        <p className="place__to">{ data.destination }, { data.destination_name }</p>
+                    </div>
                             </div>
                         </div>
-                        <FormComponent changeSuccess={ changeSuccess } />
+                        <FormComponent changeSuccess={ changeSuccess } closeHandler={ handleClose } />
                       </>
                     :
                       <div>

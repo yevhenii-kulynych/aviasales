@@ -24,6 +24,6 @@ export const useValidation = regexp => {
     }
 
     return {
-        value, color, changeHandler, error
+        color, changeHandler, error
     }
 }
