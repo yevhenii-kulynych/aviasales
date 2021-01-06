@@ -37,9 +37,9 @@ const Popup = ({ data, isShow, handleClose }) => {
                                     <p className="time__arrivals">{ data.arrival_time }</p>
                                 </div>
                                 <div className="place">
-                        <p className="place__from">{ data.origin }, { data.origin_name }</p>
-                        <p className="place__to">{ data.destination }, { data.destination_name }</p>
-                    </div>
+                                    <p className="place__from">{ data.origin }, { data.origin_name }</p>
+                                    <p className="place__to">{ data.destination }, { data.destination_name }</p>
+                                </div>
                             </div>
                         </div>
                         <FormComponent changeSuccess={ changeSuccess } closeHandler={ handleClose } />

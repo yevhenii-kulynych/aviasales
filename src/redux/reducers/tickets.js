@@ -1,9 +1,11 @@
 import { GET_TICKETS } from "../types/getTickets";
-import { RUB, USD, EUR } from '../types/currencyTypes';
- 
+import { RUB, CHANGE_CURRENCY } from '../types/currencyTypes';
+import { FILTER } from '../types/filter';
+
 const initialState = {
   tickets: [],
   initialCurrency: { name: RUB, ratio: 1 },
+  filteredTickets: []
 }
 
 const tickets = (state = initialState, action) => {
@@ -13,21 +15,21 @@ const tickets = (state = initialState, action) => {
         case GET_TICKETS:
 
           return Object.assign({}, state, {
-            tickets: [...action.payload]
+            tickets: [...action.payload],
+            filteredTickets: [...action.payload]
           })
-        case USD:
+          
+        case CHANGE_CURRENCY:
 
           return Object.assign({}, state, {
-              tickets: [...state.tickets],
               initialCurrency: {...action.payload},
         })
 
-        case EUR:
+        case FILTER:
 
           return Object.assign({}, state, {
-              tickets: [...state.tickets],
-              initialCurrency: {...action.payload},
-        })
+            filteredTickets: [...state.filteredTickets].filter(a => a.stops === action.payload)
+          })
 
         default:
 

@@ -1,9 +1,9 @@
+import { CHANGE_CURRENCY } from '../types/currencyTypes';
 
-
-export const switchCurrency = (type, data) => {
+export const switchCurrency = data => {
     
     return {
-      type,
+      type: CHANGE_CURRENCY,
       payload: data
     }
 }

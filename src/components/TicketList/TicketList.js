@@ -8,6 +8,7 @@ import "./TicketList.css";
 const TicketList = () => {
 
     const { tickets } = useSelector(state => state.tickets);
+    const { filteredTickets } = useSelector(state => state.tickets)
     const dispatch = useDispatch()
 
 
@@ -16,15 +17,15 @@ const TicketList = () => {
     }, [])
 
 
-    console.log(tickets);
+    console.log(filteredTickets);
 
     return (
         <div className="ticket-list">
 
             {
-                tickets.length > 0
+                filteredTickets.length > 0
                 ?
-                    tickets.map(el => {
+                filteredTickets.map(el => {
                        
                         return <TicketItem 
                                 key={ Math.floor(Math.random() * 1e6) }
