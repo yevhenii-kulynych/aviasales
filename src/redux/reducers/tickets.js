@@ -1,6 +1,6 @@
 import { GET_TICKETS } from "../types/getTickets";
 import { RUB, CHANGE_CURRENCY } from '../types/currencyTypes';
-import { FILTER } from '../types/filter';
+import { FILTER, REMOVE_CATEGORY, RESET } from '../types/filter';
 
 const initialState = {
   tickets: [],
@@ -27,13 +27,26 @@ const tickets = (state = initialState, action) => {
         })
 
         case FILTER:
+          console.log('state ', state.isChecked.stops)
+          const filtered = [...state.isChecked.stops , action.payload]
 
+          console.log('state filtered', filtered)
           return Object.assign({}, state, {
             
-            isChecked: { stops: [...state.isChecked.stops , action.payload] }
+            isChecked: { stops: [...new Set(filtered)] }
           })
 
-        case "RESET":
+        case REMOVE_CATEGORY:
+
+          const filteredItems = [...state.isChecked.stops].filter(empty => empty !== action.payload)
+
+          console.log('REMOVE_CATEGORY', filteredItems)
+          return Object.assign({}, state, {
+            
+            isChecked: { stops: [...new Set(filteredItems)] }
+          })
+
+        case RESET:
 
           return Object.assign({}, state, {
               

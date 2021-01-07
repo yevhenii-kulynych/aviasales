@@ -18,17 +18,15 @@ const TicketList = () => {
     }, [])
 
 
-    console.log(isChecked);
-
     return (
         <div className="ticket-list">
 
             {
                 isChecked.stops.length === 0
                 ?
-
-                    tickets.map(el => {
-                       
+                    
+                filteredTickets.map(el => {
+                        
                         return <TicketItem 
                                 key={ Math.floor(Math.random() * 1e6) }
                                 ticket={ el }

@@ -25,7 +25,7 @@ const StopsFilter = () => {
                         {
                             uniqueStops.map(el => {
                                 
-                                const text = el === 0 ? 'Без пересадки' : el === 1 ? `${el} пересадка` : `${el} пересадок`
+                                const text = el === 0 ? 'Без пересадки' : el === 1 ? `${el} пересадка` : `${el} пересадки`
 
                                 return <Checkbox
                                             key={ el } 

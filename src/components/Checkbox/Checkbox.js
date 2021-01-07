@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from "react-redux";
-import { filterStops } from "../../redux/actions/filterStops";
+import React  from 'react';
+import { useDispatch } from "react-redux";
+import { filterStops, removeFilterStops, resetFilter } from "../../redux/actions/filterStops";
 import { Form } from 'react-bootstrap';
 
 const Checkbox = ({ text, name, id, stops, all }) => {
 
     const dispatch = useDispatch();
 
-    const f = (num) => dispatch(filterStops(num))
+    const addFilterItem = value => dispatch(filterStops(value))
 
-    const x = () => dispatch({type: 'RESET'})
+    const removeItemFromFilter = value => dispatch(removeFilterStops(value))
+
+    const resetAll = () => dispatch(resetFilter())
 
 
     const checkboxHandler = event => {
 
         if (event.target.checked) {
             
-            all ? x() : f(stops)
+            all ? resetAll() : addFilterItem(stops)
         } else {
 
-            x()
+            removeItemFromFilter(stops)
         }
     }
 
