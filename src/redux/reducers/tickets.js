@@ -5,7 +5,8 @@ import { FILTER } from '../types/filter';
 const initialState = {
   tickets: [],
   initialCurrency: { name: RUB, ratio: 1 },
-  filteredTickets: []
+  filteredTickets: [],
+  isChecked: { stops: [] }
 }
 
 const tickets = (state = initialState, action) => {
@@ -28,8 +29,16 @@ const tickets = (state = initialState, action) => {
         case FILTER:
 
           return Object.assign({}, state, {
-            filteredTickets: [...state.filteredTickets].filter(a => a.stops === action.payload)
+            
+            isChecked: { stops: [...state.isChecked.stops , action.payload] }
           })
+
+        case "RESET":
+
+          return Object.assign({}, state, {
+              
+            isChecked: { stops: [] }
+          })  
 
         default:
 
