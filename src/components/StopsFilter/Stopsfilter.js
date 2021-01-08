@@ -1,14 +1,12 @@
 import React from 'react';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Form, Row, Col } from 'react-bootstrap';
 import Checkbox from '../Checkbox/Checkbox'
 import './StopsFilter.css';
 
 const StopsFilter = () => {
 
-    const stops = useSelector(state => state.tickets.tickets)
-    const uniqueStops = [...new Set(stops.map(el => el.stops))].sort();
-
+    const stops = useSelector(state => state.tickets.stops)
     
     return (
         <div className="filter p-3">
@@ -23,7 +21,7 @@ const StopsFilter = () => {
                             all={ true }
                         />
                         {
-                            uniqueStops.map(el => {
+                            stops.map(el => {
                                 
                                 const text = el === 0 ? 'Без пересадки' : el === 1 ? `${el} пересадка` : `${el} пересадки`
 

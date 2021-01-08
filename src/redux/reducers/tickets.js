@@ -5,6 +5,7 @@ import { FILTER, REMOVE_CATEGORY, RESET } from '../types/filter';
 const initialState = {
   tickets: [],
   initialCurrency: { name: RUB, ratio: 1 },
+  stops: [],
   filteredTickets: [],
   isChecked: { stops: [] }
 }
@@ -17,6 +18,7 @@ const tickets = (state = initialState, action) => {
 
           return Object.assign({}, state, {
             tickets: [...action.payload],
+            stops: [...new Set(action.payload.map(el => el.stops))].sort(),
             filteredTickets: [...action.payload]
           })
           
@@ -27,6 +29,7 @@ const tickets = (state = initialState, action) => {
         })
 
         case FILTER:
+          
           console.log('state ', state.isChecked.stops)
           const filtered = [...state.isChecked.stops , action.payload]
 

@@ -25,7 +25,7 @@ const TicketList = () => {
                 isChecked.stops.length === 0
                 ?
                     
-                filteredTickets.map(el => {
+                    filteredTickets.map(el => {
                         
                         return <TicketItem 
                                 key={ Math.floor(Math.random() * 1e6) }

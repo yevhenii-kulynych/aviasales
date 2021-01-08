@@ -6,13 +6,9 @@ import { Form } from 'react-bootstrap';
 const Checkbox = ({ text, name, id, stops, all }) => {
 
     const dispatch = useDispatch();
-
     const addFilterItem = value => dispatch(filterStops(value))
-
     const removeItemFromFilter = value => dispatch(removeFilterStops(value))
-
     const resetAll = () => dispatch(resetFilter())
-
 
     const checkboxHandler = event => {
 
