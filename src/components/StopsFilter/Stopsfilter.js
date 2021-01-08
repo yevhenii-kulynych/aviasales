@@ -6,7 +6,7 @@ import './StopsFilter.css';
 
 const StopsFilter = () => {
 
-    const stops = useSelector(state => state.tickets.stops)
+    const stops = useSelector(state => state.tickets.stops);
     
     return (
         <div className="filter p-3">
