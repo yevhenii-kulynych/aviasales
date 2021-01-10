@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect }  from 'react';
 import { useDispatch } from "react-redux";
-import { filterStops, removeFilterStops, resetFilter } from "../../redux/actions/filterStops";
+import { filterStops, removeFilterStops, resetFilter, resetToOne } from "../../redux/actions/filterStops";
 import { Form } from 'react-bootstrap';
 import './Checkbox.css'
 
@@ -44,7 +44,7 @@ const Checkbox = ({ text, name, id, stops, all, isChecked }) => {
             />
             {
                 isShown && (
-                    <p className="text-hover" onClick={ () => { dispatch({type: 'ONLY_ONE', payload: stops}) } }>Только</p>
+                    <p className="text-hover" onClick={ () => { dispatch(resetToOne(stops)) } }>Только</p>
                 )
             }
         </div>

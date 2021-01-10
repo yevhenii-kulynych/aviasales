@@ -1,6 +1,6 @@
 import { GET_TICKETS } from "../types/getTickets";
 import { RUB, CHANGE_CURRENCY } from '../types/currencyTypes';
-import { FILTER, REMOVE_CATEGORY, RESET } from '../types/filter';
+import { FILTER, REMOVE_CATEGORY, RESET, ONLY_ONE } from '../types/filter';
 
 const initialState = {
   tickets: [],
@@ -39,8 +39,8 @@ const tickets = (state = initialState, action) => {
         case FILTER:
 
           console.log('state ', state.isCheckedStops.stops)
-          const filtered = [...state.isCheckedStops.stops , action.payload]
-          const x = state.isChecked.inputs.map(el => {
+          const filteredStops = [...state.isCheckedStops.stops , action.payload]
+          const changeCheckedInputsForFilterAction = state.isChecked.inputs.map(el => {
 
             if (el.name === action.payload) {
 
@@ -49,17 +49,17 @@ const tickets = (state = initialState, action) => {
             return el
           })
 
-          console.log('x', x)
+          console.log('changeCheckedInputsForFilterAction', changeCheckedInputsForFilterAction)
           return Object.assign({}, state, {
             
-            isCheckedStops: { stops: [...new Set(filtered)] },
-            isChecked: { inputs: [...x] }
+            isCheckedStops: { stops: [...new Set(filteredStops)] },
+            isChecked: { inputs: [...changeCheckedInputsForFilterAction] }
           })
 
-        case 'ONLY_ONE':
+        case ONLY_ONE:
            
-            const filteredItemsXX = [...state.isCheckedStops.stops].filter(empty => empty === action.payload)
-            const xx = state.isChecked.inputs.map(el => {
+            const filteredStopsForOnlyOneAction = [...state.isCheckedStops.stops].filter(empty => empty === action.payload)
+            const changeCheckedInputsForOnlyOneAction = state.isChecked.inputs.map(el => {
   
               if (el.name === action.payload) {
   
@@ -71,17 +71,17 @@ const tickets = (state = initialState, action) => {
               return el
             })
   
-            console.log('x', xx)
+            console.log('changeCheckedInputsForOnlyOneAction', changeCheckedInputsForOnlyOneAction)
             return Object.assign({}, state, {
               
-              isCheckedStops: { stops: [...new Set(filteredItemsXX)] },
-              isChecked: { inputs: [...xx] }
+              isCheckedStops: { stops: [...new Set(filteredStopsForOnlyOneAction)] },
+              isChecked: { inputs: [...changeCheckedInputsForOnlyOneAction] }
             })  
 
         case REMOVE_CATEGORY:
 
           const filteredItems = [...state.isCheckedStops.stops].filter(empty => empty !== action.payload)
-          const z = state.isChecked.inputs.map(el => {
+          const changeCheckedInputsForRemoveAction = state.isChecked.inputs.map(el => {
 
             if (el.name === action.payload) {
 
@@ -90,11 +90,11 @@ const tickets = (state = initialState, action) => {
             return el
           })
           console.log('REMOVE_CATEGORY', filteredItems)
-          console.log('Z', z)
+          console.log('changeCheckedInputsForRemoveAction', changeCheckedInputsForRemoveAction)
           return Object.assign({}, state, {
             
             isCheckedStops: { stops: [...new Set(filteredItems)] },
-            isChecked: { inputs: [...z] }
+            isChecked: { inputs: [...changeCheckedInputsForRemoveAction] }
           })
 
         case RESET:
