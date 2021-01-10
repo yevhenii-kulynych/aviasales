@@ -1,9 +1,13 @@
-import React  from 'react';
+import React, { useState, useRef, useEffect }  from 'react';
 import { useDispatch } from "react-redux";
 import { filterStops, removeFilterStops, resetFilter } from "../../redux/actions/filterStops";
 import { Form } from 'react-bootstrap';
+import './Checkbox.css'
 
-const Checkbox = ({ text, name, id, stops, all }) => {
+const Checkbox = ({ text, name, id, stops, all, isChecked }) => {
+
+    const [isShown, setIsShown] = useState(false);
+    const inp = useRef(null)
 
     const dispatch = useDispatch();
     const addFilterItem = value => dispatch(filterStops(value))
@@ -21,14 +25,29 @@ const Checkbox = ({ text, name, id, stops, all }) => {
         }
     }
 
+    useEffect(() => {
+        inp.current.checked = isChecked
+    }, [isChecked])
+
     return (
-        <Form.Check
-            type="checkbox"
-            label={ text }
-            name={ name }
-            id={ id }
-            onClick={ checkboxHandler }
-        />
+        <div className={`input-wrap ${isShown ? 'hovered' : ''}`} 
+            onMouseEnter={() => setIsShown(true)} 
+            onMouseLeave={() => setIsShown(false)}
+        >
+            <Form.Check
+                type="checkbox"
+                label={ text }
+                name={ name }
+                id={ id }
+                onClick={ checkboxHandler }
+                ref={inp}
+            />
+            {
+                isShown && (
+                    <p className="text-hover" onClick={ () => { dispatch({type: 'ONLY_ONE', payload: stops}) } }>Только</p>
+                )
+            }
+        </div>
     )
 }
 

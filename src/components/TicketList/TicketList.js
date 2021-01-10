@@ -9,7 +9,7 @@ const TicketList = () => {
 
     const { tickets } = useSelector(state => state.tickets);
     const { filteredTickets } = useSelector(state => state.tickets);
-    const { isChecked } = useSelector(state => state.tickets)
+    const { isCheckedStops } = useSelector(state => state.tickets)
     const dispatch = useDispatch()
 
 
@@ -22,10 +22,10 @@ const TicketList = () => {
         <div className="ticket-list">
 
             {
-                isChecked.stops.length === 0
+                isCheckedStops.stops.length === 0
                 ?
                     
-                    filteredTickets.map(el => {
+                    tickets.map(el => {
                         
                         return <TicketItem 
                                 key={ Math.floor(Math.random() * 1e6) }
@@ -33,8 +33,8 @@ const TicketList = () => {
                                 />
                     })
                 :
-                    filteredTickets.filter(e => isChecked.stops.includes(e.stops)).map(el => {
-                        console.log(isChecked.stops)
+                    filteredTickets.filter(e => isCheckedStops.stops.includes(e.stops)).map(el => {
+                        console.log(isCheckedStops.stops)
                         return <TicketItem 
                                 key={ Math.floor(Math.random() * 1e6) }
                                 ticket={ el }

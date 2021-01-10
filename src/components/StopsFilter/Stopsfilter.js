@@ -7,7 +7,9 @@ import './StopsFilter.css';
 const StopsFilter = () => {
 
     const stops = useSelector(state => state.tickets.stops);
+    const isChecked = useSelector(state => state.tickets.isChecked)
     
+    console.log('ischecked', isChecked);
     return (
         <div className="filter p-3">
             <h4>Количество пересадок</h4>
@@ -19,18 +21,20 @@ const StopsFilter = () => {
                             name={ 'formHorizontal' }
                             id={ 'formHorizontal-all' }
                             all={ true }
+                            isChecked={ false }
                         />
                         {
-                            stops.map(el => {
-                                
-                                const text = el === 0 ? 'Без пересадки' : el === 1 ? `${el} пересадка` : `${el} пересадки`
+                            isChecked.inputs.map(el => {
 
+                                const text = el.name === 0 ? 'Без пересадки' : el.name === 1 ? `${el.name} пересадка` : `${el.name} пересадки`
+                                console.log(el);
                                 return <Checkbox
-                                            key={ el } 
+                                            key={ el.name } 
                                             text={ text } 
                                             name={ 'formHorizontal' }
-                                            id={ `formHorizontal-${ el }` }
-                                            stops={ el }
+                                            id={ `formHorizontal-${ el.name }` }
+                                            stops={ el.name }
+                                            isChecked={ el.isChecked }
                                         />
                             })
                         }
