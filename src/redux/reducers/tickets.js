@@ -1,10 +1,13 @@
 import { GET_TICKETS } from "../types/getTickets";
-import { RUB, CHANGE_CURRENCY } from '../types/currencyTypes';
+import { RUB ,CHANGE_CURRENCY, FETCH_CURRENCY_RATES } from '../types/currencyTypes';
 import { FILTER, REMOVE_CATEGORY, RESET, ONLY_ONE } from '../types/filter';
 
 const initialState = {
   tickets: [],
-  initialCurrency: { name: RUB, ratio: 1 },
+  currencyRates: {},
+  //initialCurrency: { name: RUB, ratio: 1 },
+  initialCurrency: {},
+  initCur: {},
   stops: [],
   filteredTickets: [],
   isCheckedStops: { stops: [] },
@@ -24,16 +27,51 @@ const tickets = (state = initialState, action) => {
           }))
 
           return Object.assign({}, state, {
+
             tickets: [...action.payload],
             stops: [...new Set(action.payload.map(el => el.stops))].sort(),
             filteredTickets: [...action.payload],
             isChecked: { inputs: [...checkStateObjects] }
           })
+
+        case FETCH_CURRENCY_RATES:
           
-        case CHANGE_CURRENCY:
+          const initialCurrencyName = RUB;
+          let initialResult = {};
+
+          for (const [key, value] of Object.entries(action.payload)) {
+
+            if (key === initialCurrencyName) {
+
+              initialResult.name = key;
+              initialResult.ratio = value;
+            }
+          }
 
           return Object.assign({}, state, { 
-              initialCurrency: {...action.payload},
+
+            initialCurrency: {...initialResult},
+            currencyRates: {...action.payload},
+        })  
+          
+        case CHANGE_CURRENCY:
+          
+          const setCurrencyName = action.payload;
+          let switchedResult = {};
+
+          for (const [key, value] of Object.entries(state.currencyRates)) {
+
+            if (key === setCurrencyName) {
+
+              switchedResult.name = key;
+              switchedResult.ratio = value;
+            }
+          }
+
+
+          return Object.assign({}, state, { 
+
+            initialCurrency: {...switchedResult},
         })
 
         case FILTER:
