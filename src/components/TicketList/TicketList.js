@@ -14,8 +14,9 @@ const TicketList = () => {
 
 
     useEffect(() => {
+        
         dispatch(getTicketsAsync())
-    }, [])
+    }, [dispatch])
 
 
     return (
