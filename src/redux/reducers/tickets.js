@@ -5,9 +5,7 @@ import { FILTER, REMOVE_CATEGORY, RESET, ONLY_ONE } from '../types/filter';
 const initialState = {
   tickets: [],
   currencyRates: {},
-  //initialCurrency: { name: RUB, ratio: 1 },
   initialCurrency: {},
-  initCur: {},
   stops: [],
   filteredTickets: [],
   isCheckedStops: { stops: [] },
@@ -50,8 +48,8 @@ const tickets = (state = initialState, action) => {
 
           return Object.assign({}, state, { 
 
-            initialCurrency: {...initialResult},
-            currencyRates: {...action.payload},
+            initialCurrency: { ...initialResult },
+            currencyRates: { ...action.payload },
         })  
           
         case CHANGE_CURRENCY:
@@ -68,10 +66,9 @@ const tickets = (state = initialState, action) => {
             }
           }
 
-
           return Object.assign({}, state, { 
 
-            initialCurrency: {...switchedResult},
+            initialCurrency: { ...switchedResult },
         })
 
         case FILTER:

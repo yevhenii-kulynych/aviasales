@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Form, Button } from "react-bootstrap";
-import { useValidation } from '../../hoocks/useValidation'
+import { useValidation } from '../../hoocks/useValidation';
+import Input from '../Input/Input';
 import "./FormComponent.css";
 
 const FormComponent = ({ changeSuccess, closeHandler }) => {
@@ -55,6 +56,14 @@ const FormComponent = ({ changeSuccess, closeHandler }) => {
 
     return (
         <Form onSubmit={ submitHandler }>
+            {/* <Input 
+                id={ 'formBasicEmail' }
+                text={ 'Email' }
+                type={ 'text' }
+                placeholder={ 'Введите эл. почту' }
+                changeHandler={ email.changeHandler }
+                ref={ inputEmail }
+            /> */}
             <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="text" placeholder="Введите эл. почту" onBlur={ email.changeHandler } ref={ inputEmail }/>
