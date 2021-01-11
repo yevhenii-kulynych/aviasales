@@ -55,7 +55,7 @@ const tickets = (state = initialState, action) => {
         case CHANGE_CURRENCY:
           
           const setCurrencyName = action.payload;
-           switchedResult = {};
+          const switchedResult = {};
 
           for (const [key, value] of Object.entries(state.currencyRates)) {
 
