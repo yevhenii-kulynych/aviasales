@@ -30,14 +30,6 @@ const FormComponent = ({ changeSuccess, closeHandler }) => {
         
     }
 
-    useEffect(() => {
-
-        inputEmail.current.style.color = email.color;
-        inputPhone.current.style.color = phone.color;
-        inputFirstName.current.style.color = firstName.color;
-        inputSecondName.current.style.color = secondName.color;
-        inputPassport.current.style.color = passport.color;
-    }, [email.color, phone.color, firstName.color, secondName.color, passport.color])
 
     
     useEffect(() => {
@@ -56,18 +48,19 @@ const FormComponent = ({ changeSuccess, closeHandler }) => {
 
     return (
         <Form onSubmit={ submitHandler }>
-            {/* <Input 
+            <Input 
                 id={ 'formBasicEmail' }
                 text={ 'Email' }
                 type={ 'text' }
                 placeholder={ 'Введите эл. почту' }
                 changeHandler={ email.changeHandler }
                 ref={ inputEmail }
-            /> */}
-            <Form.Group controlId="formBasicEmail">
+                validation={ email }
+            />
+            {/* <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="text" placeholder="Введите эл. почту" onBlur={ email.changeHandler } ref={ inputEmail }/>
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group controlId="formBasicPhone">
                 <Form.Label>Телефон</Form.Label>
