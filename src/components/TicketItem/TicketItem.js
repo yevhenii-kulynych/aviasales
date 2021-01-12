@@ -9,7 +9,7 @@ import "./TicketItem.css";
 const TicketItem = ({ ticket }) => {
 
     const [show, setShow] = useState(false);
-    const loader = useSelector(state => state.loader)
+    const loader = useSelector(state => state.loader);
 
     const currency = useSelector(state => state.tickets.initialCurrency);
     const currentPrice = Math.floor(ticket.price * currency.ratio);

@@ -2,13 +2,15 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getTicketsAsync } from "../../redux/actions/GetTickets";
 import TicketItem from "../TicketItem/TicketItem";
+import { Spinner } from "react-bootstrap";
 import "./TicketList.css";
 
 
 const TicketList = () => {
 
+    const loader = useSelector(state => state.loader);
     const { tickets, isChecked } = useSelector(state => state.tickets);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
 
     useEffect(() => {
@@ -18,30 +20,34 @@ const TicketList = () => {
 
     const isFiltered = isChecked.inputs.some(stop => stop.isChecked);
 
-
     return (
         <div className="ticket-list">
-
             {
-                !isFiltered
+                loader
                 ?
+                    !isFiltered
+                        ?
+                            tickets.map(el => {
 
-                    tickets.map(el => {
-                        
-                        return <TicketItem 
-                                key={ Math.floor(Math.random() * 1e6) }
-                                ticket={ el }
+                                return <TicketItem
+                                    key={ Math.floor(Math.random() * 1e6) }
+                                    ticket={ el }
                                 />
-                    })
+                            })
+                        :
+                            tickets.filter(e => isChecked.inputs.some(stop => (stop.name === e.stops && stop.isChecked) || (stop.name === 'all' && stop.isChecked))).map(el => {
+
+                                return <TicketItem
+                                    key={ Math.floor(Math.random() * 1e6) }
+                                    ticket={ el }
+                                />
+                            })
+
                 :
-                    tickets.filter(e => isChecked.inputs.some(stop => stop.name === e.stops && stop.isChecked)).map(el => {
-                        console.log(isChecked.inputs)
-                        return <TicketItem 
-                                key={ Math.floor(Math.random() * 1e6) }
-                                ticket={ el }
-                                />
-                    })
+                    <Spinner animation="border" variant="primary" />
             }
+
+
         </div>
     )
 }

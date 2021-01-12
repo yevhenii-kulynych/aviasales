@@ -8,14 +8,14 @@
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Checkbox/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Checkbox/Checkbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FormComponent/FormComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormComponent/FormComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Input/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input/Input.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/StopsFilter/Stopsfilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StopsFilter/Stopsfilter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TicketItem/TicketItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TicketItem/TicketItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TicketList/TicketList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TicketList/TicketList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/getCurrencyRates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/getCurrencyRates.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoocks/useValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoocks/useValidation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/filterStops.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/filterStops.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/tickets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/tickets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/types/filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types/filter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,11 @@
     <fileColor scope="Android Instrumented Tests" color="Green" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1mbSxXBTFM5UKKTgyrkVm0FnaUz" />
@@ -91,7 +96,7 @@
       <workItem from="1610440985434" duration="5637000" />
       <workItem from="1610447876295" duration="374000" />
       <workItem from="1610448272443" duration="198000" />
-      <workItem from="1610448491267" duration="3117000" />
+      <workItem from="1610448491267" duration="14943000" />
     </task>
     <servers />
   </component>

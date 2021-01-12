@@ -15,9 +15,9 @@ const FormComponent = ({ changeSuccess, closeHandler }) => {
 
     const email = useValidation('^[a-z0-9.!#$%&’*+=?^_`{|}~-]+@[a-z0-9-]+(?:\\.[a-z0-9-]+)')
     const phone = useValidation('^[0-9]{13}$')
-    const firstName = useValidation('^[a-zа-я]{3,20}$')
-    const secondName = useValidation('^[a-zа-я]{3,20}$')
-    const passport = useValidation('^[a-zа-я]{3,20}$')
+    const firstName = useValidation('^[a-zа-я]{4,20}$')
+    const secondName = useValidation('^[a-zа-я]{4,20}$')
+    const passport = useValidation('^[a-zа-я]{4,20}$')
 
     const withoutErrors = Object.values(error).every(el => !el);
 
@@ -53,6 +53,7 @@ const FormComponent = ({ changeSuccess, closeHandler }) => {
                 changeHandler={ email.changeHandler }
                 ref={ inputEmail }
                 validation={ email }
+                errorMessage={ 'Неправильно введён email' }
             />
             <Input
                 id={ 'formBasicPhone' }
@@ -62,6 +63,7 @@ const FormComponent = ({ changeSuccess, closeHandler }) => {
                 changeHandler={ phone.changeHandler }
                 ref={ inputPhone }
                 validation={ phone }
+                errorMessage={ 'Неправильно введён телефон' }
                 maxLength={ 13 }
             />
             <Input
@@ -72,6 +74,7 @@ const FormComponent = ({ changeSuccess, closeHandler }) => {
                 changeHandler={ firstName.changeHandler }
                 ref={ inputFirstName }
                 validation={ firstName }
+                errorMessage={ 'Неправильно введено имя' }
             />
             <Input
                 id={ 'formBasicSecondName' }
@@ -81,6 +84,7 @@ const FormComponent = ({ changeSuccess, closeHandler }) => {
                 changeHandler={ secondName.changeHandler }
                 ref={ inputSecondName }
                 validation={ secondName }
+                errorMessage={ 'Неправильно введена фамилия' }
             />
             <Input
                 id={ 'formBasicPassport' }
@@ -90,6 +94,7 @@ const FormComponent = ({ changeSuccess, closeHandler }) => {
                 changeHandler={ passport.changeHandler }
                 ref={ inputPassport }
                 validation={ passport }
+                errorMessage={ 'Неправильно введён номер паспорта' }
             />
             <Button variant="danger" className="mr-2" onClick={ closeHandler }>
                 Отказаться

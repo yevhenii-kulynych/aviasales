@@ -7,15 +7,12 @@ import './StopsFilter.css';
 const StopsFilter = () => {
 
     const isChecked = useSelector(state => state.tickets.isChecked)
-    
-    //console.log('isChecked', isChecked);
+
     return (
         <div className="filter p-3">
             <h4>Количество пересадок</h4>
-            <>
                 <Form.Group as={ Row }>
                     <Col sm={ 12 }>
-
                         {
                             isChecked.inputs.map(el => {
 
@@ -26,8 +23,7 @@ const StopsFilter = () => {
                                         : el.name === 1
                                             ? `${el.name} пересадка`
                                             : `${el.name} пересадки`
-
-                                console.log('el' ,el);
+                                console.log('Checkbox', el)
                                 return <Checkbox
                                             key={ el.name } 
                                             text={ text } 
@@ -40,7 +36,6 @@ const StopsFilter = () => {
                         }
                     </Col>
                 </Form.Group>
-            </>
         </div>
     )
 }
