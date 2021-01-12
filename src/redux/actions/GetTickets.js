@@ -16,6 +16,8 @@ export const getTicketsAsync = () => {
     axios.get('tickets.json')
       .then(data => {
         dispatch(getTickets(data.data.tickets))
+    }).catch(err => {
+      throw err
     })
   }
 }

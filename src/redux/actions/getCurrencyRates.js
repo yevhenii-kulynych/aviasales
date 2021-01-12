@@ -20,6 +20,8 @@ export const getCurrencyRatesAsync = () => {
 
       dispatch(getCurrencyRates(data.data.rates))
       dispatch(isLoading())
+    }).catch(err => {
+      throw err
     })
 
   }

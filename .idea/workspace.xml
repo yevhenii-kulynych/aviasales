@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Checkbox/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Checkbox/Checkbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormComponent/FormComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormComponent/FormComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Input/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input/Input.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/StopsFilter/Stopsfilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StopsFilter/Stopsfilter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TicketItem/TicketItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TicketItem/TicketItem.js" afterDir="false" />
@@ -96,7 +97,7 @@
       <workItem from="1610440985434" duration="5637000" />
       <workItem from="1610447876295" duration="374000" />
       <workItem from="1610448272443" duration="198000" />
-      <workItem from="1610448491267" duration="14943000" />
+      <workItem from="1610448491267" duration="15282000" />
     </task>
     <servers />
   </component>
