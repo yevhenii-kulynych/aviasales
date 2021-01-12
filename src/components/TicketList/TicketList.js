@@ -7,9 +7,7 @@ import "./TicketList.css";
 
 const TicketList = () => {
 
-    const { tickets } = useSelector(state => state.tickets);
-    const { filteredTickets } = useSelector(state => state.tickets);
-    const { isCheckedStops } = useSelector(state => state.tickets)
+    const { tickets, isChecked } = useSelector(state => state.tickets);
     const dispatch = useDispatch()
 
 
@@ -18,14 +16,16 @@ const TicketList = () => {
         dispatch(getTicketsAsync())
     }, [dispatch])
 
+    const isFiltered = isChecked.inputs.some(stop => stop.isChecked);
+
 
     return (
         <div className="ticket-list">
 
             {
-                isCheckedStops.stops.length === 0
+                !isFiltered
                 ?
-                    
+
                     tickets.map(el => {
                         
                         return <TicketItem 
@@ -34,8 +34,8 @@ const TicketList = () => {
                                 />
                     })
                 :
-                    filteredTickets.filter(e => isCheckedStops.stops.includes(e.stops)).map(el => {
-                        console.log(isCheckedStops.stops)
+                    tickets.filter(e => isChecked.inputs.some(stop => stop.name === e.stops && stop.isChecked)).map(el => {
+                        console.log(isChecked.inputs)
                         return <TicketItem 
                                 key={ Math.floor(Math.random() * 1e6) }
                                 ticket={ el }

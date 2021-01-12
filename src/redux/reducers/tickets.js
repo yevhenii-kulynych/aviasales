@@ -7,7 +7,6 @@ const initialState = {
   currencyRates: {},
   initialCurrency: {},
   stops: [],
-  filteredTickets: [],
   isCheckedStops: { stops: [] },
   isChecked: { inputs: []}
 }
@@ -18,19 +17,19 @@ const tickets = (state = initialState, action) => {
 
         case GET_TICKETS:
 
-          const uniqueCheckValue = [...new Set(action.payload.map(el => el.stops))].sort();
-          const checkStateObjects = uniqueCheckValue.map(el => Object.assign({}, {
-            name: el,
-            isChecked: false
-          }))
+            const inputAllStops = { name: 'all', isChecked: false }
+            const uniqueCheckValue = [...new Set(action.payload.map(el => el.stops))].sort();
+            const checkStateObjects = uniqueCheckValue.map(el => Object.assign({}, {
+                name: el,
+                isChecked: false
+            }))
 
-          return Object.assign({}, state, {
+            return Object.assign({}, state, {
 
-            tickets: [...action.payload],
-            stops: [...new Set(action.payload.map(el => el.stops))].sort(),
-            filteredTickets: [...action.payload],
-            isChecked: { inputs: [...checkStateObjects] }
-          })
+                tickets: [...action.payload],
+                stops: [...new Set(action.payload.map(el => el.stops))].sort(),
+                isChecked: { inputs: [inputAllStops, ...checkStateObjects] }
+            })
 
         case FETCH_CURRENCY_RATES:
           
@@ -73,23 +72,23 @@ const tickets = (state = initialState, action) => {
 
         case FILTER:
 
-          console.log('state ', state.isCheckedStops.stops)
-          const filteredStops = [...state.isCheckedStops.stops , action.payload]
-          const changeCheckedInputsForFilterAction = state.isChecked.inputs.map(el => {
+            console.log('state ', state.isCheckedStops.stops)
+            const filteredStops = [...state.isCheckedStops.stops , action.payload]
+            const changeCheckedInputsForFilterAction = state.isChecked.inputs.map(el => {
 
-            if (el.name === action.payload) {
+                if (el.name === action.payload) {
 
-              el.isChecked = true
-            }
-            return el
-          })
+                el.isChecked = true
+                }
+                return el
+            })
 
-          console.log('changeCheckedInputsForFilterAction', changeCheckedInputsForFilterAction)
-          return Object.assign({}, state, {
+            console.log('changeCheckedInputsForFilterAction', changeCheckedInputsForFilterAction)
+            return Object.assign({}, state, {
             
-            isCheckedStops: { stops: [...new Set(filteredStops)] },
-            isChecked: { inputs: [...changeCheckedInputsForFilterAction] }
-          })
+                isCheckedStops: { stops: [...new Set(filteredStops)] },
+                isChecked: { inputs: [...changeCheckedInputsForFilterAction] }
+            })
 
         case ONLY_ONE:
            

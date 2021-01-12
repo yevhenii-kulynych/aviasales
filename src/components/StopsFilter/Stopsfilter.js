@@ -6,28 +6,28 @@ import './StopsFilter.css';
 
 const StopsFilter = () => {
 
-    //const stops = useSelector(state => state.tickets.stops);
     const isChecked = useSelector(state => state.tickets.isChecked)
     
-    console.log('ischecked', isChecked);
+    //console.log('isChecked', isChecked);
     return (
         <div className="filter p-3">
             <h4>Количество пересадок</h4>
             <>
                 <Form.Group as={ Row }>
                     <Col sm={ 12 }>
-                        <Checkbox 
-                            text={ 'Все' } 
-                            name={ 'formHorizontal' }
-                            id={ 'formHorizontal-all' }
-                            all={ true }
-                            isChecked={ false }
-                        />
+
                         {
                             isChecked.inputs.map(el => {
 
-                                const text = el.name === 0 ? 'Без пересадки' : el.name === 1 ? `${el.name} пересадка` : `${el.name} пересадки`
-                                console.log(el);
+                                const text = el.name === 'all'
+                                    ? 'Все'
+                                    : el.name === 0
+                                        ? 'Без пересадки'
+                                        : el.name === 1
+                                            ? `${el.name} пересадка`
+                                            : `${el.name} пересадки`
+
+                                console.log('el' ,el);
                                 return <Checkbox
                                             key={ el.name } 
                                             text={ text } 

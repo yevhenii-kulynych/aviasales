@@ -40,11 +40,15 @@ const Checkbox = ({ text, name, id, stops, all, isChecked }) => {
                 name={ name }
                 id={ id }
                 onClick={ checkboxHandler }
-                ref={inp}
+                ref={ inp }
             />
             {
                 isShown && (
-                    <p className="text-hover" onClick={ () => { dispatch(resetToOne(stops)) } }>Только</p>
+                    <p className="text-hover"
+                       onClick={ () => { dispatch(resetToOne(stops)) } }
+                    >
+                        Только
+                    </p>
                 )
             }
         </div>

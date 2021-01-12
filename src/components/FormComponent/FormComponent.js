@@ -18,16 +18,13 @@ const FormComponent = ({ changeSuccess, closeHandler }) => {
     const firstName = useValidation('^[a-zа-я]{3,20}$')
     const secondName = useValidation('^[a-zа-я]{3,20}$')
     const passport = useValidation('^[a-zа-я]{3,20}$')
-    
+
+    const withoutErrors = Object.values(error).every(el => !el);
 
     const submitHandler = event => {
-        
-        const list = Object.values(error)
-        
-        list.every(el => el === false) 
+        withoutErrors
             ? changeSuccess()
             : event.preventDefault()
-        
     }
 
 
@@ -57,35 +54,48 @@ const FormComponent = ({ changeSuccess, closeHandler }) => {
                 ref={ inputEmail }
                 validation={ email }
             />
-            {/* <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="text" placeholder="Введите эл. почту" onBlur={ email.changeHandler } ref={ inputEmail }/>
-            </Form.Group> */}
-
-            <Form.Group controlId="formBasicPhone">
-                <Form.Label>Телефон</Form.Label>
-                <Form.Control type="phone" placeholder="Введите телефон" onBlur={ phone.changeHandler } ref={ inputPhone } maxLength={ 13 } />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicFirstName">
-                <Form.Label>Имя</Form.Label>
-                <Form.Control type="text" placeholder="Введите имя" onBlur={ firstName.changeHandler } ref={ inputFirstName } />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicSecondName">
-                <Form.Label>Фамилия</Form.Label>
-                <Form.Control type="text" placeholder="Введите фамилию" onBlur={ secondName.changeHandler } ref={ inputSecondName }/>
-            </Form.Group>
-        
-            <Form.Group controlId="formBasicPassport">
-                <Form.Label>Номер паспорта</Form.Label>
-                <Form.Control type="text" placeholder="Введите номер паспорта" onBlur={ passport.changeHandler } ref={ inputPassport } />
-            </Form.Group>
+            <Input
+                id={ 'formBasicPhone' }
+                text={ 'Телефон' }
+                type={ 'phone' }
+                placeholder={ 'Введите телефон' }
+                changeHandler={ phone.changeHandler }
+                ref={ inputPhone }
+                validation={ phone }
+                maxLength={ 13 }
+            />
+            <Input
+                id={ 'formBasicFirstName' }
+                text={ 'Имя' }
+                type={ 'text' }
+                placeholder={ 'Введите имя' }
+                changeHandler={ firstName.changeHandler }
+                ref={ inputFirstName }
+                validation={ firstName }
+            />
+            <Input
+                id={ 'formBasicSecondName' }
+                text={ 'Фамилия' }
+                type={ 'text' }
+                placeholder={ 'Введите фамилию' }
+                changeHandler={ secondName.changeHandler }
+                ref={ inputSecondName }
+                validation={ secondName }
+            />
+            <Input
+                id={ 'formBasicPassport' }
+                text={ 'Номер паспорта' }
+                type={ 'text' }
+                placeholder={ 'Введите номер паспорта' }
+                changeHandler={ passport.changeHandler }
+                ref={ inputPassport }
+                validation={ passport }
+            />
             <Button variant="danger" className="mr-2" onClick={ closeHandler }>
                 Отказаться
             </Button>
             
-            <Button variant="success" type="submit">
+            <Button variant="success" type="submit" disabled={!withoutErrors}>
                 Купить
             </Button>
         </Form>  

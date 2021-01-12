@@ -3,12 +3,15 @@ import OwnButton from "../OwnButton/OwnButton";
 import { useSelector } from 'react-redux';
 import Popup from '../Popup/Popup'
 import logo from "../../assets/company.png";
+import { Spinner } from 'react-bootstrap';
 import "./TicketItem.css";
 
 const TicketItem = ({ ticket }) => {
 
     const [show, setShow] = useState(false);
-    const currency = useSelector(state => state.tickets.initialCurrency)
+    const loader = useSelector(state => state.loader)
+
+    const currency = useSelector(state => state.tickets.initialCurrency);
     const currentPrice = Math.floor(ticket.price * currency.ratio);
 
     const handleClose = () => setShow(false);
@@ -29,7 +32,17 @@ const TicketItem = ({ ticket }) => {
             <div className="item">
                 <div className="item__left">
                     <img className="item__company-logo" src={ logo } alt={ 'company' }/>
-                    <OwnButton price={ `${currentPrice} ${currency.name}` } handleShow={ handleShow }></OwnButton>
+                    {
+                        loader
+                        ?
+                            <OwnButton 
+                                price={ `${currentPrice} ${currency.name}` } 
+                                handleShow={ handleShow } 
+                            />
+                        :
+                            <Spinner animation="border" variant="primary" />
+                    }
+
                 </div>
                 <div className="item__right">
                     <div className="time">
