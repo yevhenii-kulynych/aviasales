@@ -1,6 +1,6 @@
 import axios from "axios";
 import { FETCH_CURRENCY_RATES } from '../types/currencyTypes';
-import { isLoading } from "../actions/isLoading";
+import { isLoading } from "./isLoading";
 
 
 export const getCurrencyRates = data => {

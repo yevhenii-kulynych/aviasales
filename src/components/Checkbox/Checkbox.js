@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect }  from 'react';
 import { useDispatch } from "react-redux";
-import { filterStops, resetFilter, resetToOne } from "../../redux/actions/filterStops";
+import { filterStops, resetToOne } from "../../redux/actions/filterStops";
 import { Form } from 'react-bootstrap';
 import './Checkbox.css'
 
@@ -11,13 +11,12 @@ const Checkbox = ({ text, name, id, stops, all, isChecked }) => {
 
     const dispatch = useDispatch();
     const filteringByStops = value => dispatch(filterStops(value))
-    const resetAll = () => dispatch(resetFilter())
 
     const checkboxHandler = event => {
 
         if (event.target.checked) {
             
-            all ? resetAll() : filteringByStops(stops)
+            filteringByStops(stops)
         } else {
 
             filteringByStops(stops)

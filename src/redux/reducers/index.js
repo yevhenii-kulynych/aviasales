@@ -2,10 +2,10 @@ import { combineReducers } from "redux";
 import tickets from "./tickets"
 import loader from "./loader";
 
-const allRedusers = combineReducers({
+const allReducers = combineReducers({
 
     tickets,
     loader
 })
 
-export default allRedusers;
+export default allReducers;

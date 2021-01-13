@@ -1,4 +1,4 @@
-import { FILTER, RESET, ONLY_ONE } from '../types/filter';
+import { FILTER, ONLY_ONE } from '../types/filter';
 
 export const filterStops = data => {
     
@@ -6,13 +6,6 @@ export const filterStops = data => {
       type: FILTER,
       payload: data
     }
-}
-
-export const resetFilter = () => {
-    
-  return {
-    type: RESET
-  }
 }
 
 export const resetToOne = data => {

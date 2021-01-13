@@ -5,7 +5,7 @@ import { FILTER, RESET, ONLY_ONE } from '../types/filter';
 const initialState = {
   tickets: [],
   currencyRates: [],
-  initialCurrency: { name: RUB, ratio: 1},
+  initialCurrency: { name: RUB, ratio: 1 },
   isChecked: { inputs: []}
 }
 
@@ -116,13 +116,6 @@ const tickets = (state = initialState, action) => {
 
                 isChecked: { inputs: [...setOnlyOneChecked] }
             })
-
-        case RESET:
-
-          return Object.assign({}, state, {
-              
-            isCheckedStops: { stops: [] }
-          })  
 
         default:
 
