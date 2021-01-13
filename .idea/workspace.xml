@@ -7,10 +7,13 @@
     <list default="true" id="90897ea6-09d7-4676-8e3d-574d52c05277" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Checkbox/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Checkbox/Checkbox.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/filterStops.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/filterStops.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/actions/getCurrencyRates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/getCurrencyRates.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/tickets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/tickets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/types/filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types/filter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +95,7 @@
       <workItem from="1610447876295" duration="374000" />
       <workItem from="1610448272443" duration="198000" />
       <workItem from="1610448491267" duration="16899000" />
-      <workItem from="1610467917245" duration="1624000" />
+      <workItem from="1610467917245" duration="1973000" />
     </task>
     <servers />
   </component>

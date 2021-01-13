@@ -1,6 +1,6 @@
 import { GET_TICKETS } from "../types/getTickets";
 import { RUB ,CHANGE_CURRENCY, FETCH_CURRENCY_RATES } from '../types/currencyTypes';
-import { FILTER, RESET, ONLY_ONE } from '../types/filter';
+import { FILTER, ONLY_ONE } from '../types/filter';
 
 const initialState = {
   tickets: [],
