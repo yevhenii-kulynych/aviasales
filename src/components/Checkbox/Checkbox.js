@@ -4,7 +4,7 @@ import { filterStops, resetToOne } from "../../redux/actions/filterStops";
 import { Form } from 'react-bootstrap';
 import './Checkbox.css'
 
-const Checkbox = ({ text, name, id, stops, all, isChecked }) => {
+const Checkbox = ({ text, name, id, stops, isChecked }) => {
 
     const [isShown, setIsShown] = useState(false);
     const inp = useRef(null)

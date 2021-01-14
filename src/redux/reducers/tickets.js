@@ -64,7 +64,9 @@ const tickets = (state = initialState, action) => {
 
         case FILTER:
 
-            const filteredInputsStatus = state.isChecked.inputs.map(el => {
+            let filteredInputsStatus;
+
+            filteredInputsStatus = state.isChecked.inputs.map(el => {
 
                 if (action.payload !== 'all') {
 
@@ -75,6 +77,7 @@ const tickets = (state = initialState, action) => {
                             el.isChecked = false;
                         }
                     }
+
                 } else {
 
                     if (el.name !== 'all') {
@@ -84,18 +87,32 @@ const tickets = (state = initialState, action) => {
                             el.isChecked = false;
                         }
                     }
+
                 }
 
-                if (el.name === action.payload) {
+                if (action.payload === el.name) {
 
                     el.isChecked ? el.isChecked = false : el.isChecked = true
                 }
+
                 return el
             })
 
+            const allInputsAreUnChecked = filteredInputsStatus.every(input => input.isChecked === false);
+
+            if (allInputsAreUnChecked) {
+
+                filteredInputsStatus = filteredInputsStatus.map(element => {
+
+                    if (element.name === 'all') element.isChecked = true;
+
+                    return element;
+                })
+            }
+
             return Object.assign({}, state, {
 
-                isChecked: { inputs: [...filteredInputsStatus] }
+                isChecked: { inputs: filteredInputsStatus }
             })
 
         case ONLY_ONE:
@@ -108,13 +125,15 @@ const tickets = (state = initialState, action) => {
                 } else {
 
                     el.isChecked = false
+
                 }
+
                 return el
             })
 
             return Object.assign({}, state, {
 
-                isChecked: { inputs: [...setOnlyOneChecked] }
+                isChecked: { inputs: setOnlyOneChecked }
             })
 
         default:
