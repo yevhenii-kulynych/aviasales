@@ -21,4 +21,4 @@ const form = (state = initialState, action) => {
     }
 }
 
-export default form;git
+export default form;

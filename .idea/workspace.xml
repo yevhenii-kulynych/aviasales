@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90897ea6-09d7-4676-8e3d-574d52c05277" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Checkbox/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Checkbox/Checkbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FormComponent/FormComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormComponent/FormComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Input/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input/Input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Popup/Popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Popup/Popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TicketItem/TicketItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TicketItem/TicketItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/tickets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/tickets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/form.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +105,7 @@
       <workItem from="1610467917245" duration="5253000" />
       <workItem from="1610529245052" duration="11900000" />
       <workItem from="1610545647177" duration="13769000" />
-      <workItem from="1610619290799" duration="11411000" />
+      <workItem from="1610619290799" duration="11967000" />
     </task>
     <servers />
   </component>
