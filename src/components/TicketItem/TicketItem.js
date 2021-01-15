@@ -1,14 +1,28 @@
 import React, { useState } from "react";
 import OwnButton from "../OwnButton/OwnButton";
+import { useSelector, useDispatch } from 'react-redux';
 import Popup from '../Popup/Popup'
 import logo from "../../assets/company.png";
+import { Spinner } from 'react-bootstrap';
 import "./TicketItem.css";
+import { eraseFormData } from "../../redux/actions/setFormData";
 
 const TicketItem = ({ ticket }) => {
 
     const [show, setShow] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const loader = useSelector(state => state.loader);
+    const dispatch = useDispatch();
 
-    const handleClose = () => setShow(false);
+    const currency = useSelector(state => state.tickets.initialCurrency);
+    const currentPrice = Math.floor(ticket.price * currency.ratio);
+
+    const handleClose = () => {
+
+        setShow(false);
+        setSuccess(false);
+        dispatch(eraseFormData())
+    };
     const handleShow = () => setShow(true);
 
     const formatDate = date => {
@@ -21,12 +35,26 @@ const TicketItem = ({ ticket }) => {
         return resultData.replace(/\./, ",");
     }
 
+    const changeSuccess = bool => {
+        setSuccess(bool)
+    }
+
     return (
         <>
             <div className="item">
                 <div className="item__left">
-                    <img className="item__company-logo" src={ logo } />
-                    <OwnButton price={ ticket.price } handleShow={ handleShow }></OwnButton>
+                    <img className="item__company-logo" src={ logo } alt={ 'company' }/>
+                    {
+                        loader
+                        ?
+                            <OwnButton 
+                                price={ `${currentPrice} ${currency.name}` } 
+                                handleShow={ handleShow } 
+                            />
+                        :
+                            <Spinner animation="border" variant="primary" />
+                    }
+
                 </div>
                 <div className="item__right">
                     <div className="time">
@@ -44,7 +72,13 @@ const TicketItem = ({ ticket }) => {
                     </div>
                 </div>
             </div>
-            <Popup isShow={ show } handleClose={ handleClose } data={ ticket } />
+            <Popup
+                success={ success }
+                changeSuccess={ changeSuccess }
+                isShow={ show }
+                handleClose={ handleClose }
+                data={ ticket }
+                price={ `${currentPrice} ${currency.name}` }/>
         </>
     )
 }

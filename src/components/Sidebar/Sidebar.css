@@ -3,4 +3,6 @@
     width: 30%;
     border: 1px solid lightgray;
     background-color: #fff;
+    align-self: flex-start;
+    border-radius: 0.5rem;
 }
