@@ -3,11 +3,11 @@ import { Button } from "react-bootstrap";
 import "./OwnButton.css";
 
 
-const OwnButton = props => {
+const OwnButton = ({ price, handleShow }) => {
 
     return (
         
-        <Button variant="warning" onClick={props.handleShow}>{ props.text }</Button>
+        <Button variant="warning" onClick={ handleShow }>Купить за { price }</Button>
     )
 }
 
