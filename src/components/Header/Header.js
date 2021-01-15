@@ -1,12 +1,12 @@
 import React from "react";
 import "./Header.css";
-
+import icon from "../../assets/icon.png";
 
 const Header = () => {
 
     return (
         <nav className="header">
-            <p>icon</p>
+            <img src={ icon } alt={ 'icon' }/>
         </nav>
     )
 }
