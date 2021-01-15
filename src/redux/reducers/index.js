@@ -1,9 +1,13 @@
 import { combineReducers } from "redux";
 import tickets from "./tickets"
+import loader from "./loader";
+import form from "./form";
 
-const allRedusers = combineReducers({
+const allReducers = combineReducers({
 
-    tickets
+    tickets,
+    loader,
+    form
 })
 
-export default allRedusers;
+export default allReducers;

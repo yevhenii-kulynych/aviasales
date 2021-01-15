@@ -1,23 +1,17 @@
-import React, { useEffect, forwardRef } from "react";
-import { Form } from 'react-bootstrap'
+import React from "react";
+import { ErrorMessage, Field } from "formik";
 import './Input';
 
-//{id, text, type, placeholder, changeHandler, ref, validation}
-const Input = (props, ref) => {
-    
-    useEffect(() => {
 
-        ref.current.style.color = props.validation.color;
+const Input = props => {
 
-    }, [props.validation])
-
-    
-    
     return(
-    <Form.Group controlId={ props.id }>
-        <Form.Label>{ props.text }</Form.Label>
-        <Form.Control type={ props.type } placeholder={ props.placeholder } onBlur={ props.changeHandler } ref={ ref }/>
-    </Form.Group>
-)}
+        <div className="form-group">
+            <label htmlFor={ props.htmlFor }>{ props.text }</label>
+            <Field name={ props.name } type="text" className={'form-control' + (props.errors && props.touched ? ' is-invalid' : '')} />
+            <ErrorMessage name={ props.name } component="div" className="invalid-feedback" />
+        </div>
+    )
+}
 
-export default forwardRef(Input);
+export default Input;

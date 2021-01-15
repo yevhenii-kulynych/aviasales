@@ -1,14 +1,11 @@
 import { GET_TICKETS } from "../types/getTickets";
 import { RUB ,CHANGE_CURRENCY, FETCH_CURRENCY_RATES } from '../types/currencyTypes';
-import { FILTER, REMOVE_CATEGORY, RESET, ONLY_ONE } from '../types/filter';
+import { FILTER, ONLY_ONE } from '../types/filter';
 
 const initialState = {
   tickets: [],
-  currencyRates: {},
-  initialCurrency: {},
-  stops: [],
-  filteredTickets: [],
-  isCheckedStops: { stops: [] },
+  currencyRates: [],
+  initialCurrency: { name: RUB, ratio: 1 },
   isChecked: { inputs: []}
 }
 
@@ -18,126 +15,126 @@ const tickets = (state = initialState, action) => {
 
         case GET_TICKETS:
 
-          const uniqueCheckValue = [...new Set(action.payload.map(el => el.stops))].sort();
-          const checkStateObjects = uniqueCheckValue.map(el => Object.assign({}, {
-            name: el,
-            isChecked: false
-          }))
+            const inputAllStops = { name: 'all', isChecked: true }
+            const uniqueInputStops = [...new Set(action.payload.map(el => el.stops))].sort();
+            const checkBoxes = uniqueInputStops.map(el => Object.assign({}, {
+                name: el,
+                isChecked: false
+            }))
 
-          return Object.assign({}, state, {
+            return Object.assign({}, state, {
 
-            tickets: [...action.payload],
-            stops: [...new Set(action.payload.map(el => el.stops))].sort(),
-            filteredTickets: [...action.payload],
-            isChecked: { inputs: [...checkStateObjects] }
-          })
+                tickets: [...action.payload],
+                isChecked: { inputs: [inputAllStops, ...checkBoxes] }
+            })
 
         case FETCH_CURRENCY_RATES:
-          
-          const initialCurrencyName = RUB;
-          const initialResult = {};
 
-          for (const [key, value] of Object.entries(action.payload)) {
+            const arrayOfCurrencyRates = [];
 
-            if (key === initialCurrencyName) {
+            for (const [key, value] of Object.entries(action.payload)) {
 
-              initialResult.name = key;
-              initialResult.ratio = value;
+                const obj = {};
+                obj.name = key;
+                obj.ratio = value;
+                arrayOfCurrencyRates.push(obj)
             }
-          }
 
-          return Object.assign({}, state, { 
+            return Object.assign({}, state, {
 
-            initialCurrency: { ...initialResult },
-            currencyRates: { ...action.payload },
-        })  
+                currencyRates: [ ...arrayOfCurrencyRates]
+            })
           
         case CHANGE_CURRENCY:
-          
-          const setCurrencyName = action.payload;
-          const switchedResult = {};
 
-          for (const [key, value] of Object.entries(state.currencyRates)) {
+            const newValue = {};
+            state.currencyRates.forEach(currency => {
 
-            if (key === setCurrencyName) {
+                if (currency.name === action.payload) {
 
-              switchedResult.name = key;
-              switchedResult.ratio = value;
-            }
-          }
+                    newValue.name = currency.name;
+                    newValue.ratio = currency.ratio;
+                }
+            })
 
-          return Object.assign({}, state, { 
+            return Object.assign({}, state, {
 
-            initialCurrency: { ...switchedResult },
-        })
+                initialCurrency: { ...newValue }
+            })
 
         case FILTER:
 
-          console.log('state ', state.isCheckedStops.stops)
-          const filteredStops = [...state.isCheckedStops.stops , action.payload]
-          const changeCheckedInputsForFilterAction = state.isChecked.inputs.map(el => {
+            let filteredInputsStatus;
 
-            if (el.name === action.payload) {
+            filteredInputsStatus = state.isChecked.inputs.map(el => {
 
-              el.isChecked = true
+                if (action.payload !== 'all') {
+
+                    if (el.name === 'all') {
+
+                        if (el.isChecked) {
+
+                            el.isChecked = false;
+                        }
+                    }
+
+                } else {
+
+                    if (el.name !== 'all') {
+
+                        if (el.isChecked) {
+
+                            el.isChecked = false;
+                        }
+                    }
+
+                }
+
+                if (action.payload === el.name) {
+
+                    el.isChecked ? el.isChecked = false : el.isChecked = true
+                }
+
+                return el
+            })
+
+            const allInputsAreUnChecked = filteredInputsStatus.every(input => input.isChecked === false);
+
+            if (allInputsAreUnChecked) {
+
+                filteredInputsStatus = filteredInputsStatus.map(element => {
+
+                    if (element.name === 'all') element.isChecked = true;
+
+                    return element;
+                })
             }
-            return el
-          })
 
-          console.log('changeCheckedInputsForFilterAction', changeCheckedInputsForFilterAction)
-          return Object.assign({}, state, {
-            
-            isCheckedStops: { stops: [...new Set(filteredStops)] },
-            isChecked: { inputs: [...changeCheckedInputsForFilterAction] }
-          })
+            return Object.assign({}, state, {
+
+                isChecked: { inputs: filteredInputsStatus }
+            })
 
         case ONLY_ONE:
-           
-            const filteredStopsForOnlyOneAction = [...state.isCheckedStops.stops].filter(empty => empty === action.payload)
-            const changeCheckedInputsForOnlyOneAction = state.isChecked.inputs.map(el => {
-  
-              if (el.name === action.payload) {
-  
-                el.isChecked = true
-              } else {
 
-                el.isChecked = false
-              }
-              return el
+            const setOnlyOneChecked = state.isChecked.inputs.map(el => {
+
+                if (el.name === action.payload) {
+
+                    el.isChecked = true
+                } else {
+
+                    el.isChecked = false
+
+                }
+
+                return el
             })
-  
-            console.log('changeCheckedInputsForOnlyOneAction', changeCheckedInputsForOnlyOneAction)
+
             return Object.assign({}, state, {
-              
-              isCheckedStops: { stops: [...new Set(filteredStopsForOnlyOneAction)] },
-              isChecked: { inputs: [...changeCheckedInputsForOnlyOneAction] }
-            })  
 
-        case REMOVE_CATEGORY:
-
-          const filteredItems = [...state.isCheckedStops.stops].filter(empty => empty !== action.payload)
-          const changeCheckedInputsForRemoveAction = state.isChecked.inputs.map(el => {
-
-            if (el.name === action.payload) {
-
-              el.isChecked = false
-            }
-            return el
-          })
-          console.log('REMOVE_CATEGORY', filteredItems)
-          console.log('changeCheckedInputsForRemoveAction', changeCheckedInputsForRemoveAction)
-          return Object.assign({}, state, {
-            
-            isCheckedStops: { stops: [...new Set(filteredItems)] },
-            isChecked: { inputs: [...changeCheckedInputsForRemoveAction] }
-          })
-
-        case RESET:
-
-          return Object.assign({}, state, {
-              
-            isCheckedStops: { stops: [] }
-          })  
+                isChecked: { inputs: setOnlyOneChecked }
+            })
 
         default:
 
